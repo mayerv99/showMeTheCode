@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model plan {
+  id Int @id @default(autoincrement())
+  freeTime Int
+}
+
+model phone {
+  id                                            Int           @id @default(autoincrement())
+  prefix                                        String       
+  connections_connections_destination_idTophone connections[] @relation("connections_destination_idTophone")
+  connections_connections_origin_idTophone      connections[] @relation("connections_origin_idTophone")
+}
+
+model connections {
+  origin_id                               Int
+  destination_id                          Int
+  fees                                    Decimal @db.Decimal(3, 2)
+  phone_connections_destination_idTophone phone   @relation("connections_destination_idTophone", fields: [destination_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  phone_connections_origin_idTophone      phone   @relation("connections_origin_idTophone", fields: [origin_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([origin_id, destination_id])
+}
