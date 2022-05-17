@@ -35,7 +35,9 @@ function Form({ setPrices }) {
   };
 
   useEffect(() => {
-    getDestinationsOptions();
+    if (origin) {
+      return getDestinationsOptions();
+    }
   }, [origin]);
 
   useEffect(() => {
