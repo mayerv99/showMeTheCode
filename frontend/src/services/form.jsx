@@ -10,7 +10,7 @@ export const getOptions = async () => {
 
 export const getDestinations = async (origin) => {
   const destinations = await axios
-    .get(`http://localhost:3030/destinations?id=${origin.id}`)
+    .get(`http://localhost:3030/destinations?id=${origin?.id}`)
     .then((res) => res.data)
     .catch((err) => err);
   return destinations;

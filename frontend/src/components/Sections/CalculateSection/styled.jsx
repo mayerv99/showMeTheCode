@@ -4,6 +4,14 @@ export const Wrapper = styled.div`
   width: 80%;
   height: 90%;
   margin: 0 auto;
+
+  h2 {
+    margin-top: 50px;
+    text-align: center;
+    strong {
+      color: rgb(var(--blue));
+    }
+  }
 `;
 export const Header = styled.div`
   text-align: center;

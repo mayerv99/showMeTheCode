@@ -3,8 +3,9 @@ import AnimatedSelect from "./components/animatedSelect";
 import { getOptions, getDestinations, getResults } from "../../services/form";
 
 import { phoneOptionsAdapter } from "../../utils/adapters";
+import { Wrapper } from "./styled";
 
-function Form() {
+function Form({ setPrices }) {
   const [origin, setOrigin] = useState();
   const [destination, setDestination] = useState();
   const [originsOptions, setOriginsOptions] = useState();
@@ -19,7 +20,6 @@ function Form() {
 
   const getDestinationsOptions = async () => {
     const res = await getDestinations(origin);
-    console.log(res);
     return setDestinationOptions(phoneOptionsAdapter(res));
   };
 
@@ -30,7 +30,8 @@ function Form() {
       time: timeRef.current.value,
     };
     const result = await getResults(dataToSend);
-    console.log(result);
+
+    return setPrices(result);
   };
 
   useEffect(() => {
@@ -42,22 +43,29 @@ function Form() {
   }, []);
 
   return (
-    <div>
+    <Wrapper>
       <AnimatedSelect
         options={originsOptions || []}
         placeholder="Insira a origem"
         value={origin}
         onChange={(event) => setOrigin(event.value)}
+        className="select"
       />
+
       <AnimatedSelect
         options={destinationsOptions || []}
-        placeholder="Insira a origem"
+        placeholder="Insira o destino"
         value={destination}
         onChange={(event) => setDestination(event.value)}
+        className="select"
       />
-      <input type="number" ref={timeRef} />
+      <input
+        placeholder="Insira o tempo em minutos"
+        type="number"
+        ref={timeRef}
+      />
       <button onClick={handleCalculate}>Calcular</button>
-    </div>
+    </Wrapper>
   );
 }
 

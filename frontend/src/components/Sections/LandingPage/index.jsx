@@ -17,10 +17,6 @@ function LandingPage() {
         <h3>Chamadas de longa distância nacional</h3>
         <h2>Qualidade &</h2>
         <h2>Transparência</h2>
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
-        </p>
         <ButtonsWrapper>
           <ServicesButton>Ver serviços</ServicesButton>
           <CalculateButton />

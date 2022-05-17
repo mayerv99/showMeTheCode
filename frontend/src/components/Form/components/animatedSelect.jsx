@@ -5,7 +5,12 @@ import makeAnimated from "react-select/animated";
 
 const animatedComponents = makeAnimated();
 
-export default function AnimatedSelect({ options, placeholder, onChange }) {
+export default function AnimatedSelect({
+  options,
+  placeholder,
+  onChange,
+  className,
+}) {
   return (
     <Select
       closeMenuOnSelect={true}
@@ -13,6 +18,7 @@ export default function AnimatedSelect({ options, placeholder, onChange }) {
       options={options}
       placeholder={placeholder}
       onChange={onChange}
+      className={className}
     />
   );
 }

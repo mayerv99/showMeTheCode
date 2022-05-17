@@ -31,6 +31,7 @@ export const TextDiv = styled.div`
 export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 `;
 
 export const ServicesButton = styled.button`
